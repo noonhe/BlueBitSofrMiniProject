@@ -1,0 +1,24 @@
+<div class="cm-info-container" fxLayout="column">
+    <div class="cm-info-title">
+        <mat-icon>person</mat-icon><span>Customer Information</span>
+    </div>
+    <div class="cm-info-content">
+        <div class="cm-tabs-header" fxLayout>
+            <div [routerLink]="detailsRoute" routerLinkActive="router-link-active"  class="cm-tab-title">
+                <mat-icon>list</mat-icon>
+                <span>Customer Details</span>
+            </div>
+            <div [routerLink]="ordersRoute" routerLinkActive="router-link-active" class="cm-tab-title">
+                <mat-icon>add_shopping_cart</mat-icon>
+                <span>Customer Orders</span>
+            </div>
+            <div class="cm-tab-title">
+                <mat-icon>edit</mat-icon>
+                <span>Edit Customer</span>
+            </div>
+        </div>
+        <div class="cm-tabs">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
