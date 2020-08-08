@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +16,7 @@ import { CustomerListComponent } from './components/customer-list/customer-list.
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
 import { CustomerOrdersComponent } from './components/customer-orders/customer-orders.component';
 import { MainComponent } from './main.component';
+import { CustomerInfoComponent } from './components/customer-info/customer-info.component';
 
 
 @NgModule({
@@ -22,10 +24,12 @@ import { MainComponent } from './main.component';
     MainComponent,
     CustomerListComponent, 
     CustomerDetailsComponent, 
-    CustomerOrdersComponent
+    CustomerOrdersComponent, 
+    CustomerInfoComponent
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
