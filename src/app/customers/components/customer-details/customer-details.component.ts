@@ -1,15 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../services/shared.service';
+import { Customer } from '../../Data/interfaces';
 
 @Component({
-  selector: 'app-customer-details',
+  selector: 'customer-details',
   templateUrl: './customer-details.component.html',
   styleUrls: ['./customer-details.component.scss']
 })
 export class CustomerDetailsComponent implements OnInit {
 
-  constructor() { }
+  customer : Customer = null;
+  constructor(
+    private sharedService : SharedService
+  ) { }
 
   ngOnInit(): void {
+    this.sharedService.customerInfo.subscribe(
+      result => {
+        this.customer  = result;
+      }
+    )
   }
 
 }
