@@ -1,1 +1,91 @@
-<p>customer-list works!</p>
+<div class="cm-list-container" fxLayout="column">
+    <div class="cm-list-title">
+        <mat-icon>person</mat-icon><span>Customers</span>
+    </div>
+    <div class="cm-list-content">
+        <div class="cm-tabs-header" fxLayout>
+            <div class="cm-tab-title" [ngClass]="{'cm-selected-tab': currentTabIndex===0}" (click)="currentTabIndex = 0">
+                <mat-icon>view_module</mat-icon>
+                <span>Card View</span>
+            </div>
+            <div class="cm-tab-title" [ngClass]="{'cm-selected-tab': currentTabIndex===1}" (click)="currentTabIndex = 1">
+                <mat-icon>view_list</mat-icon>
+                <span>List View</span>
+            </div>
+            <div class="cm-tab-title" [ngClass]="{'cm-selected-tab': currentTabIndex===2}" (click)="currentTabIndex = 2">
+                <mat-icon>location_on</mat-icon>
+                <span>Map View</span>
+            </div>
+            <div class="cm-tab-title" [ngClass]="{'cm-selected-tab': currentTabIndex===3}" (click)="currentTabIndex = 3">
+                <mat-icon>add</mat-icon>
+                <span>New Customer</span>
+            </div>
+        </div>
+        <div class="cm-tabs">
+            <div *ngIf="currentTabIndex === 0" class="cm-tab-body">
+                <div class="cm-grid-view">
+                    <div class="cm-customer-cards" *ngFor="let customer of customersList">
+                        <ng-container [ngTemplateOutlet]="customerCard" [ngTemplateOutletContext]='{customer:customer}'>
+                        </ng-container>
+                    </div>
+                </div>
+                
+            </div>
+            <div *ngIf="currentTabIndex === 1" class="cm-tab-body">
+                <div class="cm-list-view">
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th class="cm-table-avatar-col" scope="col"></th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">City</th>
+                            <th scope="col">State</th>
+                            <th scope="col">OrderTotal</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let customer of customersList">
+                            <td><img [src]="customer.avatar" alt=""></td>
+                            <td><a (click)="navigateToCustomerInfo(customer)">{{customer.firstName}} {{customer.lastName}}</a></td>
+                            <td><span>{{customer.addressInfo.address}}</span></td>
+                            <td><span>{{customer.addressInfo.city}}</span></td>
+                            <td>{{customer.addressInfo.state}}</td>
+                            <td>{{customer.order.orderTotal}}</td>
+                            <td><a (click)="navigateToOrders(customer)">View Orders</a></td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div *ngIf="currentTabIndex === 2" class="cm-tab-body">
+
+            </div>
+            <div *ngIf="currentTabIndex === 3" class="cm-tab-body">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<ng-template #customerCard let-customer='customer'>
+    <mat-card class="cm-card">
+        <div class="cm-customer-card-header">
+            <span>{{customer.firstName}} {{customer.lastName}}</span>
+            <mat-icon (click)="navigateToCustomerInfo(customer)">open_in_new</mat-icon>
+        </div>
+        <div class="cm-customer-card-body">
+            <div class="cm-customer-avatar">
+                <img class="cm-avatar" [src]="customer.avatar" alt="avatar">
+            </div>
+            <div class="cm-customer-info" fxLayout="column" fxLayoutAlign="space-around">
+                <span>{{customer.addressInfo.city}},</span>
+                <span>{{customer.addressInfo.state}}</span>
+                <a (click)="navigateToOrders(customer)">View Orders</a>
+            </div>
+        </div>
+    </mat-card>
+</ng-template>
