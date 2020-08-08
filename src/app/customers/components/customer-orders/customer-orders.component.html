@@ -1,0 +1,15 @@
+<div *ngIf="customer">
+    <div style="font-size: 22px;">
+        <span>Orders for {{customer.firstName}} {{customer.lastName}}</span>
+    </div>
+    <div class="cm-order-list">
+        <div class="cm-order-item" *ngFor="let item of customer.order.items" fxLayout fxLayoutAlign="space-between center">
+            <span>{{item.title}}</span>
+            <span>{{item.price}}$</span>
+        </div>
+        <div class="cm-order-total" fxLayout fxLayoutAlign="space-between center">
+            <span></span>
+            <span>{{customer.order.orderTotal}}$</span>
+        </div>
+    </div>
+</div>
