@@ -1,1 +1,11 @@
-<p>main works!</p>
+<mat-toolbar color="primary" class="sticky-top">
+    <a class="cm-nav-title" [routerLink]="['/']" >Customer Manager</a>
+    <a class="cm-nav-link" [routerLink]="['/customers/list']" routerLinkActive="router-link-active" >Customers</a>
+    <a class="cm-nav-link" href="#">Orders</a>
+    <a class="cm-nav-link" href="#">About</a>
+    <a class="cm-nav-link" href="#">Login</a>
+</mat-toolbar>
+
+<div class="cm-content">
+    <router-outlet></router-outlet>
+</div>

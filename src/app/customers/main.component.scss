@@ -1,0 +1,35 @@
+.sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+a{
+    text-decoration: none;
+}
+a.cm-nav-title{
+    font-size: 1.5rem;
+    color: var(--white);
+}
+a.cm-nav-link{
+    color: var(--white);
+    font-size: 1rem;
+    margin-left: 30px;
+    &:first-of-type{
+      margin-left: 40px !important;  
+    }
+    &.router-link-active{
+        color:var(--primary-blue) ;
+        background-color: var(--white);
+        border-radius: 5px;
+        padding: 1px 10px;
+    }
+}
+
+div.cm-content{
+    padding: 35px 24px 24px 24px;
+    box-sizing: border-box;
+    height: calc(100vh - 64px); //100vh - header height
+    display: flex;
+    flex-direction: column;
+}
