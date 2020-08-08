@@ -1,12 +1,14 @@
 <div *ngIf="customer" class="cm-details-container">
-    <div class="cm-details" fxLayout>
+    <div class="cm-details" fxLayout fxLayoutAlign="flex-start center">
         <div class="cm-details-avatar">
             <img [src]="customer.avatar" alt="avatar">
         </div>
-        <div fxLayout="column">
+        <div class="cm-other-detail" fxLayout="column" fxLayoutAlign="space-between">
             <span>{{customer.firstName}} {{customer.lastName}}</span>
-            <span>{{customer.addressInfo.address}}</span>
-            <span>{{customer.addressInfo.city}}, {{customer.addressInfo.state}}</span>
+            <div fxLayout="column">
+                <span>{{customer.addressInfo.address}}</span>
+                <span>{{customer.addressInfo.city}}, {{customer.addressInfo.state}}</span>
+            </div>
         </div>
     </div>
     <div class="cm-map">
